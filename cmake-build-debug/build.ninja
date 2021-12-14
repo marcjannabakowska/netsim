@@ -52,48 +52,56 @@ build cmake_object_order_depends_target_net_sim: phony || CMakeFiles/net_sim.dir
 build CMakeFiles/net_sim.dir/main.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/main.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir
 
 build CMakeFiles/net_sim.dir/src/package.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/src/package.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\src\package.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir\src
 
 build CMakeFiles/net_sim.dir/src/storage_types.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/src/storage_types.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\src\storage_types.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir\src
 
 build CMakeFiles/net_sim.dir/src/nodes.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/src/nodes.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\src\nodes.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir\src
 
 build CMakeFiles/net_sim.dir/src/helpers.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/src/helpers.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\src\helpers.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir\src
 
 build CMakeFiles/net_sim.dir/src/factory.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/src/factory.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\src\factory.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir\src
 
 build CMakeFiles/net_sim.dir/src/reports.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/src/reports.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\src\reports.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir\src
 
 build CMakeFiles/net_sim.dir/src/simulation.cpp.obj: CXX_COMPILER__net_sim_Debug D$:/CLionProjects/net_sim/src/simulation.cpp || cmake_object_order_depends_target_net_sim
   DEP_FILE = CMakeFiles\net_sim.dir\src\simulation.cpp.obj.d
   FLAGS = -g -std=gnu++14
+  INCLUDES = -ID:/CLionProjects/net_sim/include
   OBJECT_DIR = CMakeFiles\net_sim.dir
   OBJECT_FILE_DIR = CMakeFiles\net_sim.dir\src
 
