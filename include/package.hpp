@@ -5,8 +5,8 @@
 #ifndef NET_SIM_PACKAGE_HPP
 #define NET_SIM_PACKAGE_HPP
 #include <set>
+#include "types.hpp"
 
-using ElementID = int;
 
 class Package
 {
