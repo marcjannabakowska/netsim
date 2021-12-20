@@ -27,6 +27,27 @@ private:
     std::list<Package> s_;
 };
 
+enum PackageQueueType
+{
+    FIFO,
+    LIFO
+};
+
+class IPackageQueue : public IPackageStockpile
+{
+protected:
+    PackageQueueType queue_type;
+public:
+    virtual Package pop() = 0;
+    PackageQueueType get_queue_type();
+};
+
+class PackageQueue : public IPackageQueue
+{
+public:
+    explicit PackageQueue(PackageQueueType queue_type);
+    Package pop();
+};
 
 
 #endif //NET_SIM_STORAGE_TYPES_HPP
