@@ -23,11 +23,11 @@ public:
     const_iterator end() { return s_.end();}
 
     virtual ~IPackageStockpile() = default;
-private:
+protected:            // zmieniam z private na protected!
     std::list<Package> s_;
 };
 
-enum PackageQueueType
+enum class PackageQueueType
 {
     FIFO,
     LIFO
@@ -48,6 +48,8 @@ public:
     explicit PackageQueue(PackageQueueType queue_type);
     Package pop();
 };
+
+
 
 
 #endif //NET_SIM_STORAGE_TYPES_HPP
