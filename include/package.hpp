@@ -13,10 +13,10 @@ class Package
 
 public:
     Package();
-    Package(ElementID id);
+    explicit  Package(ElementID ID);
 
     bool operator==(const Package& p);
-    ElementID get_id();
+    ElementID get_id() const { return id; }
 
     ~Package();
 

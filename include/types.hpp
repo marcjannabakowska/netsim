@@ -5,7 +5,7 @@
 #ifndef NET_SIM_TYPES_HPP
 #define NET_SIM_TYPES_HPP
 
-using ElementID =  int;
+using ElementID = unsigned int;
 
 
 #endif //NET_SIM_TYPES_HPP
