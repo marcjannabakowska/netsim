@@ -16,9 +16,9 @@ public:
 
     using const_iterator = std::list<Package>::const_iterator;
 
-    std::size_t size() const {return s_.size();}
-    bool empty();
-    void push(Package&& t) {s_.push_back(t);}
+    virtual std::size_t size() = 0;
+    virtual bool empty() = 0;
+    virtual void push(Package&& t) = 0;
     const_iterator cbegin() const {return s_.cbegin();}
     const_iterator begin() {return s_.begin();}
     const_iterator cend() const { return s_.cend();}
@@ -40,8 +40,12 @@ class IPackageQueue : public IPackageStockpile
 protected:
     PackageQueueType queue_type;
 public:
+    bool empty() override;
+    void push(Package&& t) override {s_.push_back(t);};
+    std::size_t size() override {return s_.size();}
     virtual Package pop() = 0;
     virtual PackageQueueType get_queue_type() = 0;
+
 };
 
 class PackageQueue : public IPackageQueue
@@ -51,7 +55,6 @@ public:
     Package pop() override;
     PackageQueueType get_queue_type() override {return packageQueueType;};
 private:
-    std::list<Package> s_;
     PackageQueueType packageQueueType;
 };
 

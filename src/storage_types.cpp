@@ -4,7 +4,7 @@
 
 #include "storage_types.hpp"
 
-bool IPackageStockpile::empty() {
+bool IPackageQueue::empty() {
     if (s_.size() != 0)
     {
         return false;
