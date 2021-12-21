@@ -3,27 +3,29 @@
 #include "package.hpp"
 
 int main() {
-    std::cout<<"dupaa"<<std::endl;
-    {
-        Package p1;
-    }
-    Package p2;
-    std::cout<<p2.get_id();
+//    std::cout<<"dupaa"<<std::endl;
+//    {
+//        Package p1;
+//    }
+//    Package p2;
+//    std::cout<<p2.get_id();
 
-//    Package sto;
-//    Package sto1;
-//    std::cout<<sto.get_id()<<std::endl;
-//    std::cout<<sto1.get_id()<<std::endl;
-//    std::cout<<sto2.get_id()<<std::endl;
-//    Package p1;
-//    Package p2 = std::move(p1);
-//    IPackageStockpile cd;
+    PackageQueue q(PackageQueueType::FIFO);
+    q.push(Package(1));
+    q.push(Package(2));
 
-//    cd.push(sto.get_id());
-//    cd.push(sto1.get_id());
+    Package p = std::move(q.pop());
+    std::cout<<p.get_id()<<std::endl;
+    p = q.pop();
+    std::cout<<p.get_id();
+//    PackageQueue q(PackageQueueType::LIFO);
+//    q.push(Package(1));
+//    q.push(Package(2));
 //
-//    for (auto el: cd) {
-//    std::cout<<&el<<std::endl;
+//    Package p(std::move(q.pop()));
+
+
+
 
     return 0;
 }
