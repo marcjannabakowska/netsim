@@ -28,15 +28,18 @@ PackageQueue::PackageQueue(PackageQueueType type)
 Package PackageQueue::pop()
 {
 
-    int index = 0;
     // FIFO
     if(queue_type == PackageQueueType::FIFO)
-        index = 0;
+    {
+        Package p = s_.front();
+        return p;
+    }
+
     // LIFO
     if (queue_type == PackageQueueType::LIFO)
-        index = s_.size() - 1;
+    {
+        Package p = s_.back();
+        return p;
+    }
 
-    Package p =   // i tu nie wiem jak wyciągnąc element o indeksie index z tego s_
-
-    return p;
 }
