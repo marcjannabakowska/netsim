@@ -13,12 +13,13 @@ class Package
 
 public:
     Package();
-    explicit Package(ElementID ID);
+    Package(ElementID ID);
 
     bool operator==(const Package& p);
     ElementID get_id() const { return id; }
 
     ~Package();
+
 
 private:
     static std::set<ElementID> freed_IDs_;

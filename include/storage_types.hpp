@@ -23,7 +23,7 @@ public:
     const_iterator end() { return s_.end();}
 
     virtual ~IPackageStockpile() = default;
-protected:            // zmieniam z private na protected!
+private:            // zmieniam z private na protected!
     std::list<Package> s_;
 };
 
@@ -39,7 +39,7 @@ protected:
     PackageQueueType queue_type;
 public:
     virtual Package pop() = 0;
-    PackageQueueType get_queue_type();
+    virtual PackageQueueType get_queue_type() = 0;
 };
 
 class PackageQueue : public IPackageQueue
