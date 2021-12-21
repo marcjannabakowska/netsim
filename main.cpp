@@ -10,7 +10,7 @@ int main() {
 //    Package p2;
 //    std::cout<<p2.get_id();
 
-    PackageQueue q(PackageQueueType::FIFO);
+    PackageQueue q(PackageQueueType::LIFO);
     q.push(Package(1));
     q.push(Package(2));
 
