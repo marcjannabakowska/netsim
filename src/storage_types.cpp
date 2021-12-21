@@ -27,11 +27,11 @@ PackageQueue::PackageQueue(PackageQueueType type)
 
 Package PackageQueue::pop()
 {
-
     // FIFO
     if(queue_type == PackageQueueType::FIFO)
     {
         Package p = s_.front();
+        s_.pop_front();
         return p;
     }
 
@@ -39,7 +39,9 @@ Package PackageQueue::pop()
     if (queue_type == PackageQueueType::LIFO)
     {
         Package p = s_.back();
+        s_.pop_back();
         return p;
     }
+
 
 }
