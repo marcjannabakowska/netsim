@@ -3,7 +3,7 @@
 #include "package.hpp"
 
 int main() {
-
+    std::cout<<"dupaa"<<std::endl;
     Package sto;
     Package sto1;
     Package sto2;
