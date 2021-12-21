@@ -3,6 +3,8 @@
 //
 #include "package.hpp"
 
+std::set<ElementID> Package::freed_IDs_;
+std::set<ElementID> Package::assigned_IDs_;
 
 
 Package::Package() {
