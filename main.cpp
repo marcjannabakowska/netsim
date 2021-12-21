@@ -4,19 +4,26 @@
 
 int main() {
     std::cout<<"dupaa"<<std::endl;
-    Package sto;
-    Package sto1;
-    Package sto2;
+
+    {
+        Package p1;
+    }
+ Package p2;
+std::cout<<p2.get_id();
+//    Package sto;
+//    Package sto1;
 //    std::cout<<sto.get_id()<<std::endl;
 //    std::cout<<sto1.get_id()<<std::endl;
 //    std::cout<<sto2.get_id()<<std::endl;
+//    Package p1;
+//    Package p2 = std::move(p1);
+//    IPackageStockpile cd;
 
-    IPackageStockpile cd;
+//    cd.push(sto.get_id());
+//    cd.push(sto1.get_id());
+//
+//    for (auto el: cd) {
+//    std::cout<<&el<<std::endl;
 
-    cd.push(sto1);
-    std::cout<<cd.size();
-//    for (size_t i = 0; i < x.size(); i++) {
-//        std::cout<<&x<<std::endl;
-//    }
     return 0;
 }

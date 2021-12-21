@@ -8,6 +8,8 @@
 #include "package.hpp"
 #include<list>
 
+
+
 class IPackageStockpile {
 public:
     IPackageStockpile(std::list<Package> s = {}) : s_(s) {}
@@ -16,7 +18,7 @@ public:
 
     std::size_t size() const {return s_.size();}
     bool empty();
-    void push(Package& t) {s_.push_back(t);}
+    void push(Package&& t) {s_.push_back(t);}
     const_iterator cbegin() const {return s_.cbegin();}
     const_iterator begin() {return s_.begin();}
     const_iterator cend() const { return s_.cend();}

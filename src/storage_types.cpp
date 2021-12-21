@@ -14,6 +14,8 @@ bool IPackageStockpile::empty() {
     }
 }
 
+
+
 PackageQueueType IPackageQueue::get_queue_type()
 {
     return this->queue_type;

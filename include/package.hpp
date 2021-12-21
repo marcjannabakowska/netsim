@@ -10,7 +10,6 @@
 
 class Package
 {
-
 public:
     Package();
     Package(ElementID ID);
@@ -21,7 +20,7 @@ public:
     ~Package();
 
 
-private:
+protected:
     static std::set<ElementID> freed_IDs_;
     static std::set<ElementID> assigned_IDs_;
     ElementID id;
