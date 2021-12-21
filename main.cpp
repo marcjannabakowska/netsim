@@ -4,12 +4,12 @@
 
 int main() {
     std::cout<<"dupaa"<<std::endl;
-
     {
         Package p1;
     }
- Package p2;
-std::cout<<p2.get_id();
+    Package p2;
+    std::cout<<p2.get_id();
+
 //    Package sto;
 //    Package sto1;
 //    std::cout<<sto.get_id()<<std::endl;

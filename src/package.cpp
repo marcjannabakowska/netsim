@@ -11,7 +11,7 @@ std::set<ElementID> Package::assigned_IDs_;
 
 Package::Package() {
     if (!freed_IDs_.empty()) {
-        id = *(freed_IDs_.begin());
+        id = *freed_IDs_.begin();
         assigned_IDs_.insert(id);    /* dodanie nowego id  do zbioru przypsanych */
         freed_IDs_.erase(id);    /* usunięcie przypisanego ze zbioru wolnych */
     }
@@ -35,7 +35,8 @@ Package::Package(const ElementID ID) {
 }
 //
 Package::~Package() {
+    freed_IDs_.insert(id);
     assigned_IDs_.erase(assigned_IDs_.find(id));
-    freed_IDs_.insert(id);   // dodajemy do wolnych te usunięte, aby mogły być znowu użyte
+  // dodajemy do wolnych te usunięte, aby mogły być znowu użyte
 
 }
