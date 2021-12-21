@@ -25,18 +25,18 @@ Package::Package() {
     }
 }
 
-bool Package::operator==(const Package& p) {
+bool Package::operator==(const Package&& p) {
     return this->id == p.id;
 }
 
-Package::Package(const ElementID ID) {
+Package::Package(ElementID ID) {
     id = ID;
-    assigned_IDs_.insert(ID);
+    assigned_IDs_.insert(id);
 }
 //
 Package::~Package() {
+    assigned_IDs_.erase(id);
     freed_IDs_.insert(id);
-    assigned_IDs_.erase(assigned_IDs_.find(id));
   // dodajemy do wolnych te usunięte, aby mogły być znowu użyte
 
 }

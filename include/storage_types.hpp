@@ -47,8 +47,12 @@ public:
 class PackageQueue : public IPackageQueue
 {
 public:
-    explicit PackageQueue(PackageQueueType queue_type);
-    Package pop();
+    explicit PackageQueue(PackageQueueType queue_type): packageQueueType(queue_type) {};
+    Package pop() override;
+    PackageQueueType get_queue_type() override {return packageQueueType;};
+private:
+    std::list<Package> s_;
+    PackageQueueType packageQueueType;
 };
 
 

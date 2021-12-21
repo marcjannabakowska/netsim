@@ -15,16 +15,16 @@ bool IPackageStockpile::empty() {
 }
 
 
-
-PackageQueueType IPackageQueue::get_queue_type()
-{
-    return this->queue_type;
-}
-
-PackageQueue::PackageQueue(PackageQueueType type)
-{
-    this->queue_type = type;
-}
+//
+//PackageQueueType IPackageQueue::get_queue_type()
+//{
+//    return this->queue_type;
+//}
+//
+//PackageQueue::PackageQueue(PackageQueueType type)
+//{
+//    this->queue_type = type;
+//}
 
 
 Package PackageQueue::pop()
@@ -32,7 +32,7 @@ Package PackageQueue::pop()
     // FIFO
     if(queue_type == PackageQueueType::FIFO)
     {
-        Package p = s_.front();
+        Package p = std::move(s_.front());
         s_.pop_front();
         return p;
     }

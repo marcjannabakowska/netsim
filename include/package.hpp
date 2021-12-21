@@ -14,7 +14,7 @@ public:
     Package();
     Package(ElementID ID);
 
-    bool operator==(const Package& p);
+    bool operator==(const Package&& p);
     ElementID get_id() const { return id; }
 
     ~Package();
