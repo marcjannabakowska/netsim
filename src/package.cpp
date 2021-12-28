@@ -15,7 +15,7 @@ Package::Package() {
         assigned_IDs_.insert(id);    /* dodanie nowego id  do zbioru przypsanych */
         freed_IDs_.erase(id);    /* usunięcie przypisanego ze zbioru wolnych */
     }
-    if (!assigned_IDs_.empty()) {
+    else if (!assigned_IDs_.empty()) {  //tutaj brakowało elsa po prostu
         id = *(assigned_IDs_.end()) + 1;        /* inkrementacja */
         assigned_IDs_.insert(id);
     }
