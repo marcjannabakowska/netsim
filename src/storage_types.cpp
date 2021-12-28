@@ -4,7 +4,7 @@
 
 #include "storage_types.hpp"
 
-bool IPackageQueue::empty() {
+bool PackageQueue::empty() {
     if (s_.size() != 0)
     {
         return false;
@@ -17,7 +17,9 @@ bool IPackageQueue::empty() {
 Package PackageQueue::pop()
 {
     // FIFO
-    if (queue_type == PackageQueueType::FIFO)
+
+
+    if (q_type == PackageQueueType::FIFO)  //tutaj nie tą zmienną sprawdzałyśmy aa
     {
         auto p = std::move(s_.front());
         s_.pop_front();
@@ -25,12 +27,11 @@ Package PackageQueue::pop()
     }
 
     // LIFO
-    if (queue_type == PackageQueueType::LIFO)
+    if(q_type == PackageQueueType::LIFO)
     {
         Package p = std::move(s_.back());
         s_.pop_back();
         return p;
     }
-
-
 }
+
