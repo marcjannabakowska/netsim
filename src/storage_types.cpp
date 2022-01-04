@@ -27,7 +27,7 @@ Package PackageQueue::pop()
     }
 
     // LIFO
-    if(q_type == PackageQueueType::LIFO)
+    else
     {
         Package p = std::move(s_.back());
         s_.pop_back();
