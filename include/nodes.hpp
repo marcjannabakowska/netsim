@@ -57,14 +57,22 @@ private:
 
 class ReceiverPreferences {
     using preferences_t = std::map<IPackageReceiver*, double>;
+    using const_iterator = preferences_t::const_iterator;
     ReceiverPreferences(ProbabilityGenerator pg = default_probability_generator) : pg_(std::move(pg)) {}; //chyba tak powinien wyglądać ten konstruktor domyślny
+
+    const_iterator cbegin() const {return preferences_.cbegin();};
+    const_iterator begin() const {return preferences_.begin();};
+    const_iterator cend() const {return preferences_.cend();};
+    const_iterator end() const {return preferences_.end();};
+
 
     void add_receiver (IPackageReceiver* r);
     void remove_receiver (IPackageReceiver* r);
     IPackageReceiver choose_receiver ();
-    preferences_t& get_preferences();
+    preferences_t& get_preferences() ;
 private:
     ProbabilityGenerator pg_;
+    preferences_t preferences_;
 
 };
 
