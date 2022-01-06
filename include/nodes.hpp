@@ -25,7 +25,14 @@ class IPackageReceiver {
     virtual IPackageStockpile::const_iterator begin()  = 0;
     virtual IPackageStockpile::const_iterator cend() const = 0;
     virtual IPackageStockpile::const_iterator end() = 0;
+
+    //virtual ~IPackageReceiver() = default;
+
+protected:
+
+    std::list<Package> package_queue_;
 };
+
 
 
 class Storehouse : public IPackageReceiver {
@@ -68,7 +75,7 @@ class ReceiverPreferences {
 
     void add_receiver (IPackageReceiver* r);
     void remove_receiver (IPackageReceiver* r);
-    IPackageReceiver choose_receiver ();
+    IPackageReceiver *choose_receiver ();
     preferences_t& get_preferences() ;
 private:
     ProbabilityGenerator pg_;
@@ -76,25 +83,28 @@ private:
 
 };
 
-class PackageSender {
+class PackageSender: ReceiverPreferences {
     static ReceiverPreferences receiver_preferences_;
     void send_package();
     std::optional<Package>& get_sending_buffer();
 
+
 protected:
     void push_package(Package&& p);
+    std::optional<Package> buffer_ = std::nullopt;
 
 
-
+    PackageSender();
 };
 
 
 
-class Ramp {
+class Ramp : PackageSender {
     Ramp(ElementID id, TimeOffset di);
     void deliver_goods(Time t); //TODO
     TimeOffset get_delivery_interval() const {return di_;};
     ElementID get_id() const {return id_;}
+    std::optional<Package> &get_sending_buffer();
 private:
     ElementID id_;
     TimeOffset di_;
