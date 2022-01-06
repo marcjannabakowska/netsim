@@ -65,12 +65,12 @@ set(SOURCE_FILES
 add_executable(net_sim ${SOURCE_FILES} main.cpp)
 
 set(SOURCE_FILES_TESTS
-#        test/test_Factory.cpp
-#        test/test_factory_io.cpp
-#        test/test_nodes.cpp
-#        netsim_tests/test/test_package.cpp
-#        test/test_reports.cpp
-#        test/test_simulate.cpp
+#        netsim_tests/test/test_Factory.cpp
+#        netsim_tests/test/test_factory_io.cpp
+#        netsim_tests/test/test_nodes.cpp
+        netsim_tests/test/test_package.cpp
+#        netsim_tests/test/test_reports.cpp
+#        netsim_tests/test/test_simulate.cpp
         netsim_tests/test/test_storage_types.cpp
         )
 

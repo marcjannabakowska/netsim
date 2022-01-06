@@ -19,6 +19,6 @@
 using ElementID = unsigned int;
 using Time = unsigned int;
 using TimeOffset = unsigned int;
-using ProbabilityGenerator = std::function<double> ;
+using ProbabilityGenerator = std::function<double()> ;
 
 #endif //NET_SIM_TYPES_HPP
