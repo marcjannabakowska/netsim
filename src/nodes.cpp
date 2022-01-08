@@ -1,6 +1,3 @@
-//
-// Created by ZoJa on 14.12.2021.
-//
 #include "nodes.hpp"
 
 Ramp::Ramp(ElementID id, TimeOffset di) {
@@ -29,24 +26,41 @@ void ReceiverPreferences::add_receiver(IPackageReceiver *r) {
         preferences_[r] = 1;
     }
     else {
-        preferences_[r] = pg_ + 1;     // nie wiem czemy podkreśla te działania matematyczne z pg_
+        preferences_[r] = pg_() + 1;     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWOONE
         for (auto [receiver, p] : preferences_) {
             p = p/preferences_[r];
         }
     }
 }
 
+void ReceiverPreferences::remove_receiver(IPackageReceiver *r) {
+    /** Funkcja usuwająca odbiorcę z kontenera preferences_t_ i zmieniająca wrtości dystrybuanty
+     * dla każdego pozostałego odbiorcy tak aby suma wynosiła 1 **/
+
+    if (preferences_.size() != 0 and preferences_.size() != 1) {
+
+        // i teraz trzeba coś zrobić z tą wartością prawdopodobieństwa odbiory usuwanego, bo suma musi wyjść =1, jakoś ją rozłożyć, dlatego wymyśliłam  po prostu, żeby wartość prawdopodobienstwa dodać  do pierwszego odbiorcy
+        auto element = preferences_.begin();
+        element->second += preferences_[r];
+        preferences_.erase(r);
+    }
+    if (preferences_.size() == 1) {
+        preferences_.erase(r);
+    }
+
+
+}
 
 IPackageReceiver *ReceiverPreferences::choose_receiver() {
     // Funkcja losująca wartość prawdopodobieństwa a następnie szukająca odbiorcy
 
     ProbabilityGenerator dist = pg_;
     for (auto[receiver, p] : preferences_) {
-        if (p >= dist)     // znowu podreśla działania..
+        if (p >= dist())     // znowu podreśla działania.. //nAPRAWIONE
             return receiver;
-        else
-            return nullptr;
+
     }
+    return nullptr;
 }
 std::optional<Package> &PackageSender::get_sending_buffer() {
     /** Funkcja zwracająca zawartość buforu kiedy ten nie jest pusty, w przeciwnym przypadku zwraca nullptr **/
