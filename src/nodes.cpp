@@ -28,10 +28,19 @@ void ReceiverPreferences::add_receiver(IPackageReceiver *r) {
     if (preferences_.size() == 0) {
         preferences_[r] = 1;
     }
+//    else {
+//        preferences_[r] = pg_() + 1;     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWOONE
+//        for (auto [receiver, p] : preferences_) {
+//            p = p/preferences_[r]; // ale tutak ocs sie nie zgadza bo suma nie bedize 1
+//        }
     else {
-        preferences_[r] = pg_() + 1;     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWOONE
+        preferences_[r] = pg_();     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWOONE
+        double sum_pf_ps = 0;
         for (auto [receiver, p] : preferences_) {
-            p = p/preferences_[r];
+            sum_pf_ps += p;
+        }
+        for (auto [receiver, p] : preferences_) {
+            p = p/sum_pf_ps;
         }
     }
 }
@@ -41,12 +50,19 @@ IPackageReceiver *ReceiverPreferences::choose_receiver() {
     // Funkcja losująca wartość prawdopodobieństwa a następnie szukająca odbiorcy
 
     ProbabilityGenerator dist = pg_;
+//    for (auto[receiver, p] : preferences_) {
+//        if (p >= dist())     // znowu podreśla działania.. //nAPRAWIONE
+//            return receiver;
+//        else
+//            return nullptr;
+//    }
+    double sum_of_ps = 0;
     for (auto[receiver, p] : preferences_) {
-        if (p >= dist())     // znowu podreśla działania.. //nAPRAWIONE
+        sum_of_ps += p;
+        if (sum_of_ps >= dist())     // znowu podreśla działania.. //nAPRAWIONE
             return receiver;
-        else
-            return nullptr;
     }
+    return nullptr;  //chyba tak to powinno wygladac
 }
 std::optional<Package> &PackageSender::get_sending_buffer() {
     /** Funkcja zwracająca zawartość buforu kiedy ten nie jest pusty, w przeciwnym przypadku zwraca nullptr **/

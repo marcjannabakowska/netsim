@@ -22,9 +22,9 @@ class IPackageReceiver {
     virtual ElementID get_id() const = 0;
     virtual ReceiverType get_receiver_type() const = 0;
     virtual IPackageStockpile::const_iterator cbegin() const = 0;
-    virtual IPackageStockpile::const_iterator begin()  = 0;
+    virtual IPackageStockpile::const_iterator begin() const = 0;
     virtual IPackageStockpile::const_iterator cend() const = 0;
-    virtual IPackageStockpile::const_iterator end() = 0;
+    virtual IPackageStockpile::const_iterator end() const = 0;
 
     //virtual ~IPackageReceiver() = default;
 
@@ -39,28 +39,13 @@ class Storehouse : public IPackageReceiver {
     Storehouse(ElementID id, std::unique_ptr<IPackageStockpile> d = std::make_unique<IPackageStockpile>(PackageQueue(FIFO)));
 
     ElementID get_id() const override {return id_;};
-    ReceiverType get_receiver_type() const override {return receiver_type_;};
+    ReceiverType get_receiver_type() const override {return STOREHOUSE;};
 private:
     ElementID id_;
     std::unique_ptr<IPackageStockpile> d_;
-    ReceiverType receiver_type_;
 };
 
 
-class Worker : public IPackageReceiver {
-    Worker(ElementID id, TimeOffset pd, std::unique_ptr<IPackageQueue> q);
-    ElementID get_id() const override {return id_;};
-    ReceiverType get_receiver_type() const override {return receiver_type_;};
-    void do_work(Time t);
-    TimeOffset get_processing_duration() {return pd_;};
-    Time get_package_processing_start_time();
-
-private:
-    ElementID id_;
-    TimeOffset pd_;
-    std::unique_ptr<IPackageQueue> q_;
-    ReceiverType receiver_type_;
-};
 
 class ReceiverPreferences {
     using preferences_t = std::map<IPackageReceiver*, double>;
@@ -75,8 +60,8 @@ class ReceiverPreferences {
 
     void add_receiver (IPackageReceiver* r);
     void remove_receiver (IPackageReceiver* r);
-    IPackageReceiver *choose_receiver ();
-    preferences_t& get_preferences() ;
+    IPackageReceiver *choose_receiver();
+    preferences_t& get_preferences();  //TODO: zaimplementować;
 private:
     ProbabilityGenerator pg_;
     preferences_t preferences_;
@@ -111,6 +96,20 @@ private:
 
 };
 
+class Worker : public IPackageReceiver, public PackageSender {
+    Worker(ElementID id, TimeOffset pd, std::unique_ptr<IPackageQueue> q);
+    ElementID get_id() const override {return id_;};
+    ReceiverType get_receiver_type() const override {return WORKER;};
+    void do_work(Time t);
+    TimeOffset get_processing_duration() {return pd_;};
+    Time get_package_processing_start_time();
+
+private:
+    ElementID id_;
+    TimeOffset pd_;
+    std::unique_ptr<IPackageQueue> q_;
+    ReceiverType receiver_type_;
+};
 
 
 
