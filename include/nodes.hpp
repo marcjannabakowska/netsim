@@ -27,7 +27,7 @@ public:
     virtual IPackageStockpile::const_iterator cend() const = 0;
     virtual IPackageStockpile::const_iterator end() const = 0;
 
-    //virtual ~IPackageReceiver() = default;
+    virtual ~IPackageReceiver() = default;
 
 protected:
 
@@ -89,10 +89,10 @@ protected:
 class Ramp : PackageSender {
 public:
     Ramp(ElementID id, TimeOffset di);
-    void deliver_goods(Time t); //TODO: OCHUJ CHODZI
+    void deliver_goods(Time t);
     TimeOffset get_delivery_interval() const {return di_;};
     ElementID get_id() const {return id_;}
-    std::optional<Package> &get_sending_buffer() ; //todo
+    std::optional<Package> &get_sending_buffer() {return buffer_;} ;
 private:
     ElementID id_;
     TimeOffset di_;
@@ -107,7 +107,7 @@ public:
     void do_work(Time t);
     void receive_package(Package&& p) override;
     TimeOffset get_processing_duration() {return pd_;};
-    Time get_package_processing_start_time();
+    Time get_package_processing_start_time() ; //TODO
 
 private:
     ElementID id_;

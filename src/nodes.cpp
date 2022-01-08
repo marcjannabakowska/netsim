@@ -3,16 +3,8 @@
 //
 #include "nodes.hpp"
 
-Ramp::Ramp(ElementID id, TimeOffset di) {
-    id_ = id;
-    di_ = di;
-}
 
-Worker::Worker(ElementID id, TimeOffset pd, std::unique_ptr<IPackageQueue> q) {
-    id_ = id;
-    pd_ = pd;
-    *q_ = *q;
-}
+
 
 Storehouse::Storehouse(ElementID id, std::unique_ptr<IPackageStockpile> d) {
     id_ = id;
@@ -79,8 +71,37 @@ void PackageSender::send_package() {
         receiver_preferences_.choose_receiver()->receive_package(buffer_->get_id());
     }
 }
+Ramp::Ramp(ElementID id, TimeOffset di) {
+    id_ = id;
+    di_ = di;
+}
+
+void Ramp::deliver_goods(Time t)  {
+    if (t%di_ == 0) {
+        Package x;
+        buffer_.emplace(x);
+    }
+}
+
+
+Worker::Worker(ElementID id, TimeOffset pd, std::unique_ptr<IPackageQueue> q) {
+    id_ = id;
+    pd_ = pd;
+    *q_ = *q;
+}
+
 
 
 void Worker::receive_package(Package&& p) {
     PackageSender::push_package(std::move(p));
+}
+
+void Worker::do_work(Time t) {
+    if (t == 1) {
+        receive_package(id_);
+    }
+    if (t%pd_ == 0) {
+        send_package();
+        receive_package(id_);
+    }
 }
