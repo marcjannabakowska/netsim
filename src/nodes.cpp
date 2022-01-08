@@ -29,7 +29,7 @@ void ReceiverPreferences::add_receiver(IPackageReceiver *r) {
         preferences_[r] = 1;
     }
     else {
-        preferences_[r] = pg_() + 1;     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWIONE ()DODANE
+        preferences_[r] = pg_() + 1;     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWOONE
         for (auto [receiver, p] : preferences_) {
             p = p/preferences_[r];
         }
@@ -41,8 +41,8 @@ IPackageReceiver *ReceiverPreferences::choose_receiver() {
     // Funkcja losująca wartość prawdopodobieństwa a następnie szukająca odbiorcy
 
     ProbabilityGenerator dist = pg_;
-    for (auto[receiver, p]: preferences_) {
-        if (p >= dist())     // znowu podreśla działania.. //TU TEZ
+    for (auto[receiver, p] : preferences_) {
+        if (p >= dist())     // znowu podreśla działania.. //nAPRAWIONE
             return receiver;
         else
             return nullptr;
