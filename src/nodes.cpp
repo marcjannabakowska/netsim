@@ -19,7 +19,12 @@ Storehouse::Storehouse(ElementID id, std::unique_ptr<IPackageStockpile> d) {
     d_ = std::move(d);
 }
 
+void Storehouse::receive_package(Package&& p) {
+    if(rec_type == STOREHOUSE) {
+        d_->push(std::move(p));
+    }
 
+}
 
 void ReceiverPreferences::add_receiver(IPackageReceiver *r) {
     // Funkcja dodająca odbiorcę do kontenera preferences_t_ i zmieniająca wrtości dystrybuanty
@@ -28,13 +33,9 @@ void ReceiverPreferences::add_receiver(IPackageReceiver *r) {
     if (preferences_.size() == 0) {
         preferences_[r] = 1;
     }
-//    else {
-//        preferences_[r] = pg_() + 1;     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWOONE
-//        for (auto [receiver, p] : preferences_) {
-//            p = p/preferences_[r]; // ale tutak ocs sie nie zgadza bo suma nie bedize 1
-//        }
+
     else {
-        preferences_[r] = pg_();     // nie wiem czemy podkreśla te działania matematyczne z pg_ //NAPRAWOONE
+        preferences_[r] = pg_();
         double sum_pf_ps = 0;
         for (auto [receiver, p] : preferences_) {
             sum_pf_ps += p;
@@ -50,12 +51,7 @@ IPackageReceiver *ReceiverPreferences::choose_receiver() {
     // Funkcja losująca wartość prawdopodobieństwa a następnie szukająca odbiorcy
 
     ProbabilityGenerator dist = pg_;
-//    for (auto[receiver, p] : preferences_) {
-//        if (p >= dist())     // znowu podreśla działania.. //nAPRAWIONE
-//            return receiver;
-//        else
-//            return nullptr;
-//    }
+
     double sum_of_ps = 0;
     for (auto[receiver, p] : preferences_) {
         sum_of_ps += p;
@@ -64,7 +60,27 @@ IPackageReceiver *ReceiverPreferences::choose_receiver() {
     }
     return nullptr;  //chyba tak to powinno wygladac
 }
-std::optional<Package> &PackageSender::get_sending_buffer() {
-    /** Funkcja zwracająca zawartość buforu kiedy ten nie jest pusty, w przeciwnym przypadku zwraca nullptr **/
-    return buffer_;
+
+void ReceiverPreferences::remove_receiver (IPackageReceiver* r) {
+    preferences_.erase(r);
+    if (preferences_.size() != 0) {
+        double sum_pf_ps = 0;
+        for (auto [receiver, p] : preferences_) {
+            sum_pf_ps += p;
+        }
+        for (auto [receiver, p] : preferences_) {
+            p = p/sum_pf_ps;
+        }
+    }
+}
+
+void PackageSender::send_package() {
+    if(buffer_){
+        receiver_preferences_.choose_receiver()->receive_package(buffer_->get_id());
+    }
+}
+
+
+void Worker::receive_package(Package&& p) {
+    PackageSender::push_package(std::move(p));
 }

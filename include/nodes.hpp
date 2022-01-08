@@ -18,6 +18,7 @@
 enum ReceiverType {WORKER, STOREHOUSE};
 
 class IPackageReceiver {
+public:
     virtual void receive_package(Package&& p) = 0;
     virtual ElementID get_id() const = 0;
     virtual ReceiverType get_receiver_type() const = 0;
@@ -36,18 +37,21 @@ protected:
 
 
 class Storehouse : public IPackageReceiver {
+public:
     Storehouse(ElementID id, std::unique_ptr<IPackageStockpile> d = std::make_unique<IPackageStockpile>(PackageQueue(FIFO)));
-
+    void receive_package(Package&& p) override;
     ElementID get_id() const override {return id_;};
     ReceiverType get_receiver_type() const override {return STOREHOUSE;};
 private:
     ElementID id_;
     std::unique_ptr<IPackageStockpile> d_;
+    ReceiverType rec_type;
 };
 
 
 
 class ReceiverPreferences {
+public:
     using preferences_t = std::map<IPackageReceiver*, double>;
     using const_iterator = preferences_t::const_iterator;
     ReceiverPreferences(ProbabilityGenerator pg = default_probability_generator) : pg_(std::move(pg)) {}; //chyba tak powinien wyglądać ten konstruktor domyślny
@@ -60,35 +64,35 @@ class ReceiverPreferences {
     void add_receiver (IPackageReceiver* r);
     void remove_receiver (IPackageReceiver* r);
     IPackageReceiver *choose_receiver();
-    preferences_t& get_preferences();  //TODO: zaimplementować;
+    preferences_t& get_preferences() {return preferences_;};
 private:
     ProbabilityGenerator pg_;
     preferences_t preferences_;
 
 };
 
-class PackageSender: ReceiverPreferences {
+class PackageSender: public ReceiverPreferences {
+public:
     static ReceiverPreferences receiver_preferences_;
     void send_package();
-    std::optional<Package>& get_sending_buffer();
+    std::optional<Package> &get_sending_buffer() {return buffer_;};
 
 
 protected:
-    void push_package(Package&& p);
+    void push_package(Package&& p) {buffer_.emplace(p); };
     std::optional<Package> buffer_ = std::nullopt;
 
-
-    PackageSender();
 };
 
 
 
 class Ramp : PackageSender {
+public:
     Ramp(ElementID id, TimeOffset di);
-    void deliver_goods(Time t); //TODO
+    void deliver_goods(Time t); //TODO: OCHUJ CHODZI
     TimeOffset get_delivery_interval() const {return di_;};
     ElementID get_id() const {return id_;}
-    std::optional<Package> &get_sending_buffer();
+    std::optional<Package> &get_sending_buffer() ; //todo
 private:
     ElementID id_;
     TimeOffset di_;
@@ -96,10 +100,12 @@ private:
 };
 
 class Worker : public IPackageReceiver, public PackageSender {
+public:
     Worker(ElementID id, TimeOffset pd, std::unique_ptr<IPackageQueue> q);
     ElementID get_id() const override {return id_;};
     ReceiverType get_receiver_type() const override {return WORKER;};
     void do_work(Time t);
+    void receive_package(Package&& p) override;
     TimeOffset get_processing_duration() {return pd_;};
     Time get_package_processing_start_time();
 
