@@ -1,27 +1,20 @@
 #include <iostream>
 #include "storage_types.hpp"
 #include "package.hpp"
+#include "nodes.hpp"
 
 int main() {
-//    std::cout<<"dupaa"<<std::endl;
+    Worker w(1, 2, std::make_unique<PackageQueue>(PackageQueueType::FIFO));
+    Time t = 1;
 
-    PackageQueue q(LIFO);
-    q.push(Package(1));
-    q.push(Package(2));
-//    for (auto el: q) {
-//        std::cout<<el.get_id()<<std::endl;
-//    }
+    w.receive_package(Package(1));
+    w.do_work(t);
+    ++t;
+    w.receive_package(Package(2));
+    w.do_work(t);
+    auto& buffer = w.get_sending_buffer();
 
-    Package p(std::move(q.pop()));
-    std::cout<<p.get_id()<<std::endl;
-    p = q.pop();
-    std::cout<<p.get_id();
-////    PackageQueue q(PackageQueueType::LIFO);
-//    q.push(Package(1));
-//    q.push(Package(2));
-//
-//    Package p(std::move(q.pop()));
-
+    std::cout<<buffer.value().get_id();
 
 
 

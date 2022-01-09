@@ -19,9 +19,9 @@ public:
     virtual std::size_t size() = 0;
     virtual bool empty() = 0;
     virtual IPackageStockpile::const_iterator cbegin() const = 0;
-    virtual IPackageStockpile::const_iterator begin()  = 0;
+    virtual IPackageStockpile::const_iterator begin() const = 0;
     virtual IPackageStockpile::const_iterator cend() const = 0;
-    virtual IPackageStockpile::const_iterator end() = 0;
+    virtual IPackageStockpile::const_iterator end() const = 0;
 
     virtual ~IPackageStockpile() = default;
 
@@ -53,9 +53,9 @@ public:
     std::size_t size() override {return s_.size();}
     PackageQueueType get_queue_type() override {return q_type;};
     IPackageStockpile::const_iterator cbegin() const override {return s_.cbegin();}
-    IPackageStockpile::const_iterator begin() override {return s_.begin();}
+    IPackageStockpile::const_iterator begin() const override {return s_.begin();}
     IPackageStockpile::const_iterator cend() const override { return s_.cend();}
-    IPackageStockpile::const_iterator end() override { return s_.end();}
+    IPackageStockpile::const_iterator end() const override { return s_.end();}
 private:
     PackageQueueType q_type;
     std::list<Package> s_;
