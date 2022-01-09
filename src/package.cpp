@@ -37,6 +37,6 @@ Package::Package(ElementID ID) {
 Package::~Package() {
     assigned_IDs_.erase(id);
     freed_IDs_.insert(id);
-  // dodajemy do wolnych te usunięte, aby mogły być znowu użyte
+    // dodajemy do wolnych te usunięte, aby mogły być znowu użyte
 
 }
