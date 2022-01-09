@@ -1,21 +1,20 @@
-//
-// Created by ZoJa on 14.12.2021.
-//
+////
+//// Created by ZoJa on 14.12.2021.
+////
 #include "nodes.hpp"
-
-
-
-
-Storehouse::Storehouse(ElementID id, std::unique_ptr<IPackageStockpile> d) {
+//
+//
+//
+//
+Storehouse::Storehouse(ElementID id, std::unique_ptr<PackageQueue> d) {
     id_ = id;
     d_ = std::move(d);
 }
 
 void Storehouse::receive_package(Package&& p) {
-    if(rec_type == STOREHOUSE) {
+    if (rec_type == STOREHOUSE) {
         d_->push(std::move(p));
     }
-
 }
 
 void ReceiverPreferences::add_receiver(IPackageReceiver *r) {
@@ -28,16 +27,16 @@ void ReceiverPreferences::add_receiver(IPackageReceiver *r) {
 
     else {
         preferences_[r] = pg_();
-        double sum_pf_ps = 0;
+        double sum_of_ps = 0;
         for (auto [receiver, p] : preferences_) {
-            sum_pf_ps += p;
+            sum_of_ps += p;
         }
         for (auto [receiver, p] : preferences_) {
-            p = p/sum_pf_ps;
+            p = p/sum_of_ps;
         }
     }
 }
-
+//
 
 IPackageReceiver *ReceiverPreferences::choose_receiver() {
     // Funkcja losująca wartość prawdopodobieństwa a następnie szukająca odbiorcy
@@ -47,10 +46,10 @@ IPackageReceiver *ReceiverPreferences::choose_receiver() {
     double sum_of_ps = 0;
     for (auto[receiver, p] : preferences_) {
         sum_of_ps += p;
-        if (sum_of_ps >= dist())     // znowu podreśla działania.. //nAPRAWIONE
+        if (sum_of_ps >= dist())
             return receiver;
     }
-    return nullptr;  //chyba tak to powinno wygladac
+    return nullptr;
 }
 
 void ReceiverPreferences::remove_receiver (IPackageReceiver* r) {
@@ -84,7 +83,7 @@ void Ramp::deliver_goods(Time t)  {
 }
 
 
-Worker::Worker(ElementID id, TimeOffset pd, std::unique_ptr<IPackageQueue> q) {
+Worker::Worker(ElementID id, TimeOffset pd, std::unique_ptr<PackageQueue> q) {
     id_ = id;
     pd_ = pd;
     *q_ = *q;
