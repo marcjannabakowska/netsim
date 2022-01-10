@@ -90,28 +90,19 @@ Worker::Worker(ElementID id, TimeOffset pd, std::unique_ptr<PackageQueue> q) {
 void Worker::receive_package(Package&& p) {
     PackageSender::push_package(std::move(p));
 }
-//
-//void Worker::do_work(Time t) {
-//    if (t == 1) {
-//        receive_package(id_);
-//    }
-//    if (t%pd_ == 0) {
-//        send_package();
-//        receive_package(id_);
-//    }
-//}
+
+
+
 void Worker::do_work(Time t) {
 
     if (!buffer_ and q_) {
-        buffer_.emplace(q_->pop()); // wstaw do bufora
-        package_processing_start_time_ = t; // zapamiętaj czas startu przetwarzania
+        package_processing_start_time_ = t;
+        buffer_.emplace(q_->pop());
     }
-    if (buffer_ and t - package_processing_start_time_ == pd_ + 1) {
+    if (buffer_ and t - package_processing_start_time_ == pd_ ) {
             send_package();
-
     }
-//
-//}
+
 
 
 
