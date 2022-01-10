@@ -16,12 +16,15 @@
 #include "helpers.hpp"
 
 enum ReceiverType {WORKER, STOREHOUSE};
+
 using const_iterator = std::list<Package>::const_iterator;
+
 class IPackageReceiver {
 public:
     virtual void receive_package(Package&& p) = 0;
     virtual ElementID get_id() const = 0;
     virtual ReceiverType get_receiver_type() const = 0;
+
     virtual IPackageStockpile::const_iterator cbegin() const = 0;
     virtual IPackageStockpile::const_iterator begin() const = 0;
     virtual IPackageStockpile::const_iterator cend() const = 0;
@@ -29,10 +32,6 @@ public:
 
    virtual ~IPackageReceiver() = default;
 
-protected:
-
-    std::list<Package> package_queue_;
-    ReceiverType rec_type;
 };
 
 
@@ -58,12 +57,14 @@ class ReceiverPreferences {
 public:
     using preferences_t = std::map<IPackageReceiver*, double>;
     using const_iterator = preferences_t::const_iterator;
-    explicit ReceiverPreferences(ProbabilityGenerator pg = default_probability_generator) : pg_(std::move(pg)) {};
+
+    ReceiverPreferences(ProbabilityGenerator pg = default_probability_generator) : pg_(std::move(pg)) {};
 
     void add_receiver (IPackageReceiver* r);
     void remove_receiver (IPackageReceiver* r);
     IPackageReceiver *choose_receiver();
     preferences_t& get_preferences() {return preferences_;};
+
     const_iterator cbegin() const {return preferences_.cbegin();}
     const_iterator begin() const {return preferences_.begin();}
     const_iterator cend() const { return preferences_.cend();}
@@ -76,12 +77,14 @@ private:
 
 class PackageSender: public ReceiverPreferences {
 public:
+
+
     ReceiverPreferences receiver_preferences_;
     void send_package();
     std::optional<Package> &get_sending_buffer() {return buffer_;};
 
 protected:
-    void push_package(Package&& p) {buffer_.emplace(p); };
+    void push_package(Package&& p) { if (!buffer_) { buffer_.emplace(p); } };
     std::optional<Package> buffer_ = std::nullopt;
 
 };
@@ -94,14 +97,16 @@ public:
     void deliver_goods(Time t);
     TimeOffset get_delivery_interval() const {return di_;};
     ElementID get_id() const {return id_;}
-    std::optional<Package> &get_sending_buffer() {return buffer_;} ;
+
 private:
     ElementID id_;
     TimeOffset di_;
 
 };
 
-class Worker : public IPackageReceiver, public PackageSender {
+
+
+class Worker  : public IPackageReceiver, public PackageSender {
 public:
     Worker(ElementID id, TimeOffset pd, std::unique_ptr<PackageQueue> q);
     ElementID get_id() const override {return id_;};
@@ -109,7 +114,7 @@ public:
     void do_work(Time t);
     void receive_package(Package&& p) override;
     TimeOffset get_processing_duration() {return pd_;};
-    Time get_package_processing_start_time() ; //TODO
+    Time get_package_processing_start_time()  {return package_processing_start_time_;};
     IPackageStockpile::const_iterator cbegin() const override {return q_->cbegin();}
     IPackageStockpile::const_iterator begin() const override {return q_->begin();}
     IPackageStockpile::const_iterator cend() const override { return q_->cend();}
@@ -118,7 +123,8 @@ private:
     ElementID id_;
     TimeOffset pd_;
     std::unique_ptr<PackageQueue> q_;
-    ReceiverType receiver_type_;
+    Time package_processing_start_time_;
+
 };
 
 
