@@ -85,35 +85,3 @@ bool Factory::is_consistent() {
     return true;
 }
 
-template<class Node>
-void Factory::remove_receiver(NodeCollection<Ramp>::const_iterator& collection, ElementID id) {
-
-    auto iter = collection.find_by_id(id);
-    auto receiver_ptr = dynamic_cast<IPackageReceiver>(&(iter));
-
-    for(auto & ramp : cont_r)
-    {
-        auto & _preferences = ramp.receiverpreferences.get_preferences();
-        for(auto _preference : _preferences)
-        {
-            if(_preferences.first == receiver_ptr)
-            {
-                ramp.receiverpreferences.remove_receiver(receiver_ptr);
-                break;
-            }
-        }
-    }
-
-    for(auto & worker : cont_w)
-    {
-        auto & _preferences = worker.receiverpreferences.get_preferences();
-        if(auto _preference  : _preferences)
-        {
-            if(_preferences.first == receiver_ptr)
-            {
-                worker.receiverpreferences.remove_receiver(receiver_ptr);
-                break;
-            }
-        }
-    }
-}

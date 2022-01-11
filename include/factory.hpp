@@ -41,7 +41,7 @@ public:
 class Factory {
 private:
     template<class Node>
-    void remove_receiver(NodeCollection<Ramp>::const_iterator& collection, ElementID id);
+    void remove_receiver(NodeCollection<Node>& collection, ElementID id);
     NodeCollection<Ramp> cont_r;
     NodeCollection<Worker> cont_w;
     NodeCollection<Storehouse> cont_s;
@@ -77,4 +77,38 @@ public:
 
 };
 
+
+template<class Node>
+void Factory::remove_receiver(NodeCollection<Node>& collection, ElementID id) {
+
+    auto iter = collection.find_by_id(id);
+    //(*iter).get_preferences().
+    auto receiver_ptr = dynamic_cast<IPackageReceiver*>(iter);
+
+    for(auto & ramp : cont_r)
+    {
+        auto & _preferences = ramp.receiver_preferences_.get_preferences();
+        for(auto _preference : _preferences)
+        {
+            if(_preference.first == receiver_ptr)
+            {
+                ramp.receiver_preferences_.remove_receiver(receiver_ptr);
+                break;
+            }
+        }
+    }
+
+    for(auto & worker : cont_w)
+    {
+        auto & _preferences = worker.receiver_preferences_.get_preferences();
+        for(auto _preference  : _preferences)
+        {
+            if(_preference.first == receiver_ptr)
+            {
+                worker.receiver_preferences_.remove_receiver(receiver_ptr);
+                break;
+            }
+        }
+    }
+}
 #endif //NET_SIM_FACTORY_HPP
