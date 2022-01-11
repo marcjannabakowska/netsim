@@ -408,6 +408,9 @@
 		<Unit filename="C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test/main_gtest.cpp">
 			<Option target="netsim_tests"/>
 		</Unit>
+		<Unit filename="C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test/test_Factory.cpp">
+			<Option target="netsim_tests"/>
+		</Unit>
 		<Unit filename="C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test/test_nodes.cpp">
 			<Option target="netsim_tests"/>
 		</Unit>

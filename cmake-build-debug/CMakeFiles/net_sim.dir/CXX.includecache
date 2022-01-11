@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../include/factory.hpp
+storage_types.hpp
+../include/storage_types.hpp
+nodes.hpp
+../include/nodes.hpp
+vector
+-
+
 ../include/helpers.hpp
 functional
 -
@@ -40,8 +48,6 @@ set
 types.hpp
 ../include/types.hpp
 
-../include/reports.hpp
-
 ../include/storage_types.hpp
 package.hpp
 ../include/package.hpp
@@ -56,39 +62,7 @@ ctime
 functional
 -
 
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/main.cpp
-iostream
--
-storage_types.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/storage_types.hpp
-package.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/package.hpp
-
 C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/factory.cpp
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/helpers.cpp
-helpers.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/helpers.hpp
-cstdlib
--
-random
--
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/nodes.cpp
-nodes.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/nodes.hpp
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/package.cpp
-package.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/package.hpp
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/reports.cpp
-reports.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/reports.hpp
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/simulation.cpp
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/storage_types.cpp
-storage_types.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/storage_types.hpp
+factory.hpp
+C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/factory.hpp
 

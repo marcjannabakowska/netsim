@@ -3,7 +3,7 @@ project(net_sim)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_compile_options(-Wall -Wextra -Werror -Wpedantic -pedantic-errors -Wconversion)
+add_compile_options(-Wall -Wextra -Werror -Wpedantic -pedantic-errors -Werror=switch)
 
 include_directories(
         include
@@ -23,8 +23,8 @@ set(SOURCE_FILES
 add_executable(net_sim ${SOURCE_FILES} main.cpp)
 
 set(SOURCE_FILES_TESTS
-        #        netsim_tests/test/test_Factory.cpp
-        #        netsim_tests/test/test_factory_io.cpp
+                netsim_tests/test/test_Factory.cpp
+               # netsim_tests/test/test_factory_io.cpp
         netsim_tests/test/test_nodes.cpp
         netsim_tests/test/test_package.cpp
         #        netsim_tests/test/test_reports.cpp

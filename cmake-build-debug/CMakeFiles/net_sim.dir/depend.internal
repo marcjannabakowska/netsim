@@ -7,6 +7,12 @@ CMakeFiles/net_sim.dir/main.cpp.obj
  ../include/types.hpp
  C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/main.cpp
 CMakeFiles/net_sim.dir/src/factory.cpp.obj
+ ../include/factory.hpp
+ ../include/helpers.hpp
+ ../include/nodes.hpp
+ ../include/package.hpp
+ ../include/storage_types.hpp
+ ../include/types.hpp
  C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/factory.cpp
 CMakeFiles/net_sim.dir/src/helpers.cpp.obj
  ../include/helpers.hpp

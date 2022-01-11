@@ -307,6 +307,33 @@ netsim_tests/test/main_gtest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/main_gtest.cpp.s
 .PHONY : netsim_tests/test/main_gtest.cpp.s
 
+netsim_tests/test/test_Factory.obj: netsim_tests/test/test_Factory.cpp.obj
+
+.PHONY : netsim_tests/test/test_Factory.obj
+
+# target to build an object file
+netsim_tests/test/test_Factory.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_Factory.cpp.obj
+.PHONY : netsim_tests/test/test_Factory.cpp.obj
+
+netsim_tests/test/test_Factory.i: netsim_tests/test/test_Factory.cpp.i
+
+.PHONY : netsim_tests/test/test_Factory.i
+
+# target to preprocess a source file
+netsim_tests/test/test_Factory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_Factory.cpp.i
+.PHONY : netsim_tests/test/test_Factory.cpp.i
+
+netsim_tests/test/test_Factory.s: netsim_tests/test/test_Factory.cpp.s
+
+.PHONY : netsim_tests/test/test_Factory.s
+
+# target to generate assembly for a file
+netsim_tests/test/test_Factory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_Factory.cpp.s
+.PHONY : netsim_tests/test/test_Factory.cpp.s
+
 netsim_tests/test/test_nodes.obj: netsim_tests/test/test_nodes.cpp.obj
 
 .PHONY : netsim_tests/test/test_nodes.obj
@@ -595,6 +622,9 @@ help:
 	@echo ... netsim_tests/test/main_gtest.obj
 	@echo ... netsim_tests/test/main_gtest.i
 	@echo ... netsim_tests/test/main_gtest.s
+	@echo ... netsim_tests/test/test_Factory.obj
+	@echo ... netsim_tests/test/test_Factory.i
+	@echo ... netsim_tests/test/test_Factory.s
 	@echo ... netsim_tests/test/test_nodes.obj
 	@echo ... netsim_tests/test/test_nodes.i
 	@echo ... netsim_tests/test/test_nodes.s

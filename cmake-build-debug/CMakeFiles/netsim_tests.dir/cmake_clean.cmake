@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/netsim_tests.dir/netsim_tests/test/main_gtest.cpp.obj"
+  "CMakeFiles/netsim_tests.dir/netsim_tests/test/test_Factory.cpp.obj"
   "CMakeFiles/netsim_tests.dir/netsim_tests/test/test_nodes.cpp.obj"
   "CMakeFiles/netsim_tests.dir/netsim_tests/test/test_package.cpp.obj"
   "CMakeFiles/netsim_tests.dir/src/factory.cpp.obj"

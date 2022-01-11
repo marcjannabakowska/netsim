@@ -587,6 +587,10 @@ helpers.hpp
 ../netsim_tests/mocks/nodes_mocks.hpp
 gmock/gmock.h
 ../netsim_tests/mocks/gmock/gmock.h
+gtest/gtest.h
+../netsim_tests/mocks/gtest/gtest.h
+config.hpp
+../netsim_tests/mocks/config.hpp
 nodes.hpp
 ../netsim_tests/mocks/nodes.hpp
 
@@ -610,19 +614,11 @@ C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test
 iostream
 -
 
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/helpers.cpp
-helpers.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/helpers.hpp
-cstdlib
--
-random
--
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/nodes.cpp
-nodes.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/nodes.hpp
-
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/package.cpp
+C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test/test_package.cpp
+gtest/gtest.h
+C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test/gtest/gtest.h
 package.hpp
-C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/src/package.hpp
+C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test/package.hpp
+types.hpp
+C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/netsim_tests/test/types.hpp
 
