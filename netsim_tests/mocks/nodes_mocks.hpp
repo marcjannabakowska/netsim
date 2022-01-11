@@ -4,7 +4,8 @@
 
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
-#include "config.hpp"
+
+
 
 #include "nodes.hpp"
 
@@ -20,9 +21,7 @@ public:
 
     MOCK_CONST_METHOD0(cend, IPackageStockpile::const_iterator());
 
-    #ifdef WITH_RECEIVER_TYPE
     MOCK_CONST_METHOD0(get_receiver_type, ReceiverType());
-    #endif
 
     MOCK_CONST_METHOD0(get_id, ElementID());
 };

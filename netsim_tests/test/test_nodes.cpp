@@ -5,16 +5,17 @@
 #include "package.hpp"
 #include "storage_types.hpp"
 #include "types.hpp"
-
 #include "nodes_mocks.hpp"
 #include "global_functions_mock.hpp"
+
 
 #include <iostream>
 
 using ::std::cout;
 using ::std::endl;
 
-// -----------------
+
+
 
 TEST(WorkerTest, HasBuffer) {
     // Test scenariusza opisanego na stronie:
