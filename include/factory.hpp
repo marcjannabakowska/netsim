@@ -33,9 +33,20 @@ private:
 public:
 
     void add(Node&& node) {container.push_back(std::move(node));}
-    void remove_by_id(ElementID id) {container.erase(container.begin()+id);}
-    NodeCollection<Node>::iterator find_by_id(ElementID id){return container.begin()+id;};
-    NodeCollection<Node>::const_iterator find_by_id(ElementID id) const{return container.cbegin()+id;};
+    void remove_by_id(ElementID id)
+    {
+        auto iter = std::remove_if(container.begin(), container.end(), [id](Node& elem) {return elem.get_id() == id;}); //container erase(container.begin()+id);
+        container.erase(iter);
+    }
+    NodeCollection<Node>::iterator find_by_id(ElementID id)
+    {
+        return std::find_if(container.begin(), container.end(), [id](Node& elem) {return elem.get_id() == id;});
+    }
+
+    NodeCollection<Node>::const_iterator find_by_id(ElementID id) const
+    {
+        return std::find_if(container.begin(), container.end(), [id](Node& elem) {return elem.get_id() == id;});
+    };
 
 };
 class Factory {
