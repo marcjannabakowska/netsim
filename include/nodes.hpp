@@ -46,6 +46,7 @@ public:
     IPackageStockpile::const_iterator begin() const override {return d_->begin();}
     IPackageStockpile::const_iterator cend() const override { return d_->cend();}
     IPackageStockpile::const_iterator end() const override { return d_->end();}
+    IPackageStockpile* get_queue() const {return d_.get();}
 private:
     ElementID id_;
     std::unique_ptr<PackageQueue> d_;
@@ -83,6 +84,7 @@ public:
     ReceiverPreferences receiver_preferences_;
     void send_package();
     std::optional<Package> &get_sending_buffer() {return buffer_;};
+    const std::optional<Package>& get_sending_buffer() const {return buffer_;};
 
 protected:
     void push_package(Package&& p) { if (!buffer_) { buffer_.emplace(p); } };
@@ -116,13 +118,15 @@ public:
     void receive_package(Package&& p) override;
     TimeOffset get_processing_duration()  const {return pd_;};
 
-    Time get_package_processing_start_time()  {return package_processing_start_time_;};
+    Time get_package_processing_start_time() const {return package_processing_start_time_;};
     IPackageStockpile::const_iterator cbegin() const override {return q_->cbegin();}
     IPackageStockpile::const_iterator begin() const override {return q_->begin();}
     IPackageStockpile::const_iterator cend() const override { return q_->cend();}
     IPackageStockpile::const_iterator end() const override { return q_->end();}
     IPackageQueue* get_queue() const {return q_.get();}
+    const std::optional<Package>& get_package_processing_buffer() const {return buffer_processing_;}
 private:
+    std::optional<Package> buffer_processing_;
     ElementID id_;
     TimeOffset pd_;
     std::unique_ptr<PackageQueue> q_;
