@@ -63,8 +63,9 @@ public:
     void add_receiver (IPackageReceiver* r);
     void remove_receiver (IPackageReceiver* r);
     IPackageReceiver *choose_receiver();
-    preferences_t& get_preferences() {return preferences_;};
-
+    preferences_t& get_preferences()  {return preferences_;};
+    preferences_t& get_preferences() const { return const_cast<preferences_t&>(preferences_);}
+    bool empty() const {return preferences_.empty();}
     const_iterator cbegin() const {return preferences_.cbegin();}
     const_iterator begin() const {return preferences_.begin();}
     const_iterator cend() const { return preferences_.cend();}
@@ -113,12 +114,14 @@ public:
     ReceiverType get_receiver_type() const override {return WORKER;};
     void do_work(Time t);
     void receive_package(Package&& p) override;
-    TimeOffset get_processing_duration() {return pd_;};
+    TimeOffset get_processing_duration()  const {return pd_;};
+
     Time get_package_processing_start_time()  {return package_processing_start_time_;};
     IPackageStockpile::const_iterator cbegin() const override {return q_->cbegin();}
     IPackageStockpile::const_iterator begin() const override {return q_->begin();}
     IPackageStockpile::const_iterator cend() const override { return q_->cend();}
     IPackageStockpile::const_iterator end() const override { return q_->end();}
+    IPackageQueue* get_queue() const {return q_.get();}
 private:
     ElementID id_;
     TimeOffset pd_;

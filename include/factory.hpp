@@ -1,6 +1,6 @@
-//
+
 // Created by ZoJa on 14.12.2021.
-//
+
 
 #ifndef NET_SIM_FACTORY_HPP
 #define NET_SIM_FACTORY_HPP
@@ -122,4 +122,7 @@ void Factory::remove_receiver(NodeCollection<Node>& collection, ElementID id) {
         }
     }
 }
+
+Factory load_factory_structure(std::istream& is);
+void save_factory_structure( Factory& factory, std::ostream& os);
 #endif //NET_SIM_FACTORY_HPP
