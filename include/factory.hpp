@@ -67,7 +67,18 @@ public:
 
 
     void add_worker(Worker&& w) {cont_w.add(std::move(w));}
-    void remove_worker(ElementID id) {cont_w.remove_by_id(id);}
+    void remove_worker(ElementID id)
+    {
+        Worker* node = &(*cont_w.find_by_id(id));
+        std::for_each(cont_r.begin(), cont_r.end(), [&node](Ramp& ramp) {
+            ramp.receiver_preferences_.remove_receiver(node);
+        });
+
+        std::for_each(cont_w.begin(), cont_w.end(), [&node](Worker& worker) {
+            worker.receiver_preferences_.remove_receiver(node);
+        });
+        cont_w.remove_by_id(id);
+    }
     NodeCollection<Worker>::iterator find_worker_by_id(ElementID id) {return cont_w.find_by_id(id);}
     NodeCollection<Worker>::const_iterator find_worker_by_id(ElementID id) const {return cont_w.find_by_id(id);}
     NodeCollection<Worker>::const_iterator worker_cbegin() const {return cont_w.cbegin();}
@@ -75,7 +86,18 @@ public:
 
 
     void add_storehouse(Storehouse&& s) {cont_s.add(std::move(s));}
-    void remove_storehouse(ElementID id) {cont_s.remove_by_id(id);}
+    void remove_storehouse(ElementID id)
+    {
+        Storehouse* node = &(*cont_s.find_by_id(id));
+        std::for_each(cont_w.begin(), cont_w.end(), [&node](Worker& ramp) {
+            ramp.receiver_preferences_.remove_receiver(node);
+        });
+
+        std::for_each(cont_w.begin(), cont_w.end(), [&node](Worker& worker) {
+            worker.receiver_preferences_.remove_receiver(node);
+        });
+        cont_s.remove_by_id(id);
+    }
     NodeCollection<Storehouse>::iterator find_storehouse_by_id(ElementID id) {return cont_s.find_by_id(id);}
     NodeCollection<Storehouse>::const_iterator find_storehouse_by_id(ElementID id) const {return cont_s.find_by_id(id);}
     NodeCollection<Storehouse>::const_iterator storehouse_cbegin() const {return cont_s.cbegin();}
