@@ -130,7 +130,7 @@ private:
     ElementID id_;
     TimeOffset pd_;
     std::unique_ptr<PackageQueue> q_;
-    Time package_processing_start_time_;
+    Time package_processing_start_time_ = 0;
 
 };
 
