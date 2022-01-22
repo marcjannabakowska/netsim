@@ -71,13 +71,28 @@ Ramp::Ramp(ElementID id, TimeOffset di) {
 }
 
 void Ramp::deliver_goods(Time t)  {
-    if (t%di_ == 0) {
-        buffer_.reset();
-    }
-    else {
+//    if (t%di_ == 0) {    //dla tego działa wszystko oprócz simulation
+//        buffer_.reset();
+//    }
+//    else {
+//        Package x;
+//        buffer_.emplace(x);
+//    }
+    if (t == 1)  //a dla tego działa wszystko oprócz is delivery on time
+    {
         Package x;
         buffer_.emplace(x);
     }
+    if ((t)%di_ == 0)
+    {
+        buffer_.reset();
+    }
+//    else {
+//        if (!buffer_) {
+//            Package x;
+//            buffer_.emplace(x);
+//        }
+//    }
 }
 
 //
