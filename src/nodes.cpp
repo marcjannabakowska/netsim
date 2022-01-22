@@ -78,21 +78,30 @@ void Ramp::deliver_goods(Time t)  {
 //        Package x;
 //        buffer_.emplace(x);
 //    }
-    if (t == 1)  //a dla tego działa wszystko oprócz is delivery on time
-    {
-        Package x;
-        buffer_.emplace(x);
-    }
-    if ((t)%di_ == 0)
-    {
-        buffer_.reset();
-    }
+//    if (t == 1)  //a dla tego działa wszystko oprócz is delivery on time
+//    {
+//        Package x;
+//        buffer_.emplace(x);
+//    }
+//    if ((t)%di_ == 0)
+//    {
+//        buffer_.reset();
+//    }
 //    else {
 //        if (!buffer_) {
 //            Package x;
 //            buffer_.emplace(x);
 //        }
 //    }
+
+    if(start_time_ == UINTMAX_MAX) start_time_ = t;
+    if ((t-start_time_)%di_ == 0) {
+        if (!buffer_){
+            Package tt = Package();
+            push_package(std::move(tt));
+//            tt.changeID();
+        }
+    }
 }
 
 //
@@ -122,6 +131,7 @@ void Worker::do_work(Time t) {
         buffer_processing_.reset();
         package_processing_start_time_ = 0;
     }
+
 
 
 }

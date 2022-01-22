@@ -102,6 +102,7 @@ public:
     ElementID get_id() const {return id_;}
 
 private:
+    unsigned long long start_time_ = UINTMAX_MAX;
     ElementID id_;
     TimeOffset di_;
 

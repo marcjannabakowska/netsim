@@ -334,6 +334,33 @@ netsim_tests/test/test_Factory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_Factory.cpp.s
 .PHONY : netsim_tests/test/test_Factory.cpp.s
 
+netsim_tests/test/test_factory_io.obj: netsim_tests/test/test_factory_io.cpp.obj
+
+.PHONY : netsim_tests/test/test_factory_io.obj
+
+# target to build an object file
+netsim_tests/test/test_factory_io.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_factory_io.cpp.obj
+.PHONY : netsim_tests/test/test_factory_io.cpp.obj
+
+netsim_tests/test/test_factory_io.i: netsim_tests/test/test_factory_io.cpp.i
+
+.PHONY : netsim_tests/test/test_factory_io.i
+
+# target to preprocess a source file
+netsim_tests/test/test_factory_io.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_factory_io.cpp.i
+.PHONY : netsim_tests/test/test_factory_io.cpp.i
+
+netsim_tests/test/test_factory_io.s: netsim_tests/test/test_factory_io.cpp.s
+
+.PHONY : netsim_tests/test/test_factory_io.s
+
+# target to generate assembly for a file
+netsim_tests/test/test_factory_io.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_factory_io.cpp.s
+.PHONY : netsim_tests/test/test_factory_io.cpp.s
+
 netsim_tests/test/test_nodes.obj: netsim_tests/test/test_nodes.cpp.obj
 
 .PHONY : netsim_tests/test/test_nodes.obj
@@ -387,6 +414,87 @@ netsim_tests/test/test_package.s: netsim_tests/test/test_package.cpp.s
 netsim_tests/test/test_package.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_package.cpp.s
 .PHONY : netsim_tests/test/test_package.cpp.s
+
+netsim_tests/test/test_reports.obj: netsim_tests/test/test_reports.cpp.obj
+
+.PHONY : netsim_tests/test/test_reports.obj
+
+# target to build an object file
+netsim_tests/test/test_reports.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_reports.cpp.obj
+.PHONY : netsim_tests/test/test_reports.cpp.obj
+
+netsim_tests/test/test_reports.i: netsim_tests/test/test_reports.cpp.i
+
+.PHONY : netsim_tests/test/test_reports.i
+
+# target to preprocess a source file
+netsim_tests/test/test_reports.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_reports.cpp.i
+.PHONY : netsim_tests/test/test_reports.cpp.i
+
+netsim_tests/test/test_reports.s: netsim_tests/test/test_reports.cpp.s
+
+.PHONY : netsim_tests/test/test_reports.s
+
+# target to generate assembly for a file
+netsim_tests/test/test_reports.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_reports.cpp.s
+.PHONY : netsim_tests/test/test_reports.cpp.s
+
+netsim_tests/test/test_simulate.obj: netsim_tests/test/test_simulate.cpp.obj
+
+.PHONY : netsim_tests/test/test_simulate.obj
+
+# target to build an object file
+netsim_tests/test/test_simulate.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_simulate.cpp.obj
+.PHONY : netsim_tests/test/test_simulate.cpp.obj
+
+netsim_tests/test/test_simulate.i: netsim_tests/test/test_simulate.cpp.i
+
+.PHONY : netsim_tests/test/test_simulate.i
+
+# target to preprocess a source file
+netsim_tests/test/test_simulate.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_simulate.cpp.i
+.PHONY : netsim_tests/test/test_simulate.cpp.i
+
+netsim_tests/test/test_simulate.s: netsim_tests/test/test_simulate.cpp.s
+
+.PHONY : netsim_tests/test/test_simulate.s
+
+# target to generate assembly for a file
+netsim_tests/test/test_simulate.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_simulate.cpp.s
+.PHONY : netsim_tests/test/test_simulate.cpp.s
+
+netsim_tests/test/test_storage_types.obj: netsim_tests/test/test_storage_types.cpp.obj
+
+.PHONY : netsim_tests/test/test_storage_types.obj
+
+# target to build an object file
+netsim_tests/test/test_storage_types.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_storage_types.cpp.obj
+.PHONY : netsim_tests/test/test_storage_types.cpp.obj
+
+netsim_tests/test/test_storage_types.i: netsim_tests/test/test_storage_types.cpp.i
+
+.PHONY : netsim_tests/test/test_storage_types.i
+
+# target to preprocess a source file
+netsim_tests/test/test_storage_types.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_storage_types.cpp.i
+.PHONY : netsim_tests/test/test_storage_types.cpp.i
+
+netsim_tests/test/test_storage_types.s: netsim_tests/test/test_storage_types.cpp.s
+
+.PHONY : netsim_tests/test/test_storage_types.s
+
+# target to generate assembly for a file
+netsim_tests/test/test_storage_types.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\netsim_tests.dir\build.make CMakeFiles/netsim_tests.dir/netsim_tests/test/test_storage_types.cpp.s
+.PHONY : netsim_tests/test/test_storage_types.cpp.s
 
 src/factory.obj: src/factory.cpp.obj
 
@@ -625,12 +733,24 @@ help:
 	@echo ... netsim_tests/test/test_Factory.obj
 	@echo ... netsim_tests/test/test_Factory.i
 	@echo ... netsim_tests/test/test_Factory.s
+	@echo ... netsim_tests/test/test_factory_io.obj
+	@echo ... netsim_tests/test/test_factory_io.i
+	@echo ... netsim_tests/test/test_factory_io.s
 	@echo ... netsim_tests/test/test_nodes.obj
 	@echo ... netsim_tests/test/test_nodes.i
 	@echo ... netsim_tests/test/test_nodes.s
 	@echo ... netsim_tests/test/test_package.obj
 	@echo ... netsim_tests/test/test_package.i
 	@echo ... netsim_tests/test/test_package.s
+	@echo ... netsim_tests/test/test_reports.obj
+	@echo ... netsim_tests/test/test_reports.i
+	@echo ... netsim_tests/test/test_reports.s
+	@echo ... netsim_tests/test/test_simulate.obj
+	@echo ... netsim_tests/test/test_simulate.i
+	@echo ... netsim_tests/test/test_simulate.s
+	@echo ... netsim_tests/test/test_storage_types.obj
+	@echo ... netsim_tests/test/test_storage_types.i
+	@echo ... netsim_tests/test/test_storage_types.s
 	@echo ... src/factory.obj
 	@echo ... src/factory.i
 	@echo ... src/factory.s
