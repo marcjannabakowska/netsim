@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/googletest-master
+# Install script for directory: C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/netsim/googletest-master
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/net_sim/cmake-build-debug/googletest-master/googlemock/cmake_install.cmake")
+  include("C:/Users/marcj/OneDrive/Pulpit/Marcysia/github_desktop/netsim/cmake-build-debug/googletest-master/googlemock/cmake_install.cmake")
 
 endif()
 
